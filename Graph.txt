@@ -1,0 +1,12 @@
+#References: https://deparkes.co.uk/2018/04/09/python-networkx-load-graphs-from-file/
+#Here the list of edges is given to read_edgelist function to create a graph.
+import networkx as nx
+import csv
+from matplotlib import pyplot as plt
+g=nx.read_edgelist(r"C:\Users\sajadpoa\Documents\Education\3\Blockchain\Project\sample.txt",create_using=nx.Graph(), nodetype=None)
+print (nx.info(g))
+nx.draw(g, node_size=100)
+nx.draw(g)
+#This part is aded to print the output as png file
+plt.savefig(r"C:\Users\sajadpoa\Documents\Education\3\Blockchain\Project\Graph.png", format="PNG")
+plt.show()
