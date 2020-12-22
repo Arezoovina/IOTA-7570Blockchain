@@ -4,6 +4,7 @@
 * [Intoroductio](#Introduction)
 * [Technologies](#technologies)
 * [Lunch](#Lunch)
+* [Code](#Code)
 ## Introduction
 In this project, we aim to create a IOTA address graph. To this aim, we used Hornet 0.5.6 to connect to the IOTA tangle to create the IOTA address graph. Hornet is an API for working with iota data, and it comes with a lot of advantages as it is lightweight, and it enables the users to run their own node. 
 ## Technologies
