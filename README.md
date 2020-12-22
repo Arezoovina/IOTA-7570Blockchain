@@ -1,7 +1,7 @@
 
 # IOTA Address Graph
 ## Table of contents
-* [Intoroductio](#Introduction)
+* [Intoroduction](#Introduction)
 * [Technologies](#technologies)
 * [Lunch](#Lunch)
 * [Code](#Code)
