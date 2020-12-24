@@ -18,7 +18,8 @@ In the first part of the code, we printed all transactions as nodes of the graph
 First, we have to execute the Hornet. If one is using Windows, it is enough to execute hornet.exe.  For other operating systems, there are additional steps required, which the instruction is available at https://docs.iota.org/docs/hornet/1.1/tutorials/install-hornet. Once the Hornet is executed, go to this address:localhost:8081/dashboard on the browser and wait until it states that it is synced (on a green icon) on your browser. After that, you can start executing the python codes.
 
 ## Code
-The project includes three parts: 
+The Coding section includes four parts: 
 - Receiving the milestones transactions
 - Extracting tips transactions
-- Graph
+- Address Graph
+- Getting balances
