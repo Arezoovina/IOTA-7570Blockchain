@@ -1,0 +1,24 @@
+import urllib2                    # Adding the necessary libraries
+import json
+
+command = {
+  "command": "getBalances",             # Command for getting the balances
+  "addresses": [
+    "DE9DVSOWIIIKEBAAHCKBWNXGXTOKVLZPLRAGKZG9GXKFRFWERKBFYMPRLAGVZTRVYPEPHBMUPDMRQ9DPZ"  # 
+  ]
+}
+
+stringified = json.dumps(command)
+
+headers = {
+    'content-type': 'application/json',  # Establishing connection to the API
+    'X-IOTA-API-Version': '1'
+}
+
+request = urllib2.Request(url="http://localhost:14265", data=stringified, headers=headers)
+returnData = urllib2.urlopen(request).read()
+
+jsonData = json.loads(returnData)
+
+print jsonData                 # Printing the balance
+                                # refrence: https://docs.iota.org/docs/hornet/1.1/references/api-reference#getbalances

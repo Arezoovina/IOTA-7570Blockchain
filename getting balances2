@@ -1,0 +1,105 @@
+import urllib2                             #Adding the necessary libraries
+import json
+
+file = open("Output.txt")                   #Reading the latest milestonetransaction from the text file
+ms = file.read()
+
+file.close()
+
+text_file = open("balances.txt", "w")  
+
+def listToString(s):                          #Function for converting list to string
+                                              #https://www.geeksforgeeks.org/python-program-to-convert-a-list-to-string/
+    
+    # initialize an empty string         
+    str1 = ""  
+    
+    # traverse in the string   
+    for ele in s:  
+        str1 += ele   
+    
+    # return string   
+    return str1 
+
+
+ms = ms[:81]
+
+
+
+print("latest milestonetransaction:")
+print ms
+
+
+command = {
+  "command": "findTransactions",              #Finding the tip transactions connected to the latest milestone transaction
+  "approvees": [
+    ms
+  ]
+}
+
+stringified = json.dumps(command)
+
+headers = {
+    'content-type': 'application/json',
+    'X-IOTA-API-Version': '1'
+}
+
+request = urllib2.Request(url="http://localhost:14265", data=stringified, headers=headers)     #Establishing connection to the API 
+returnData = urllib2.urlopen(request).read()
+
+jsonData = json.loads(returnData)
+
+print("\n tips:")
+
+print jsonData["hashes"]
+
+
+text_file = open("balances.txt", "w")                           #We write it to a text file to use it in the next steps
+
+
+
+length = len(jsonData["hashes"])
+
+print length
+
+y = length
+
+for x in range(0, 100):
+    
+
+    command = {
+  "command": "findTransactions",                       #Next step is finding tip transactions of those tips 
+  "approvees": [
+    jsonData["hashes"][0]
+  ]
+}
+    stringified = json.dumps(command)
+
+    headers = {
+    'content-type': 'application/json',
+    'X-IOTA-API-Version': '1'
+}
+                                                       #we write it to a text file to use it in the next steps
+    text_file.write(" \n %s" %  jsonData["hashes"][0])
+    
+   
+
+
+    request = urllib2.Request(url="http://localhost:14265", data=stringified, headers=headers)         #Establishing connection to the API
+    returnData = urllib2.urlopen(request).read()
+
+    jsonData = json.loads(returnData)
+
+
+
+    
+
+    
+
+  
+     
+
+    
+
+	
+text_file.close()  	
